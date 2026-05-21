@@ -1,0 +1,100 @@
+/* =============================================================================
+ *  管理者画面用スタイル（画面担当）
+ *  - header_admin.tpl / login.tpl / menu.tpl / aggregate.tpl で利用
+ *  - style.css の上書き／補強として読み込む
+ * ============================================================================= */
+
+.page-admin {
+    background: #f0f4fa;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    background: #1c2a4a;
+}
+
+.admin-header__nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.admin-header__user {
+    color: #cfd9eb;
+    font-size: 0.95rem;
+    margin-right: 8px;
+}
+
+.admin-header__link {
+    color: #fff;
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.admin-header__link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+.admin-header__link--logout {
+    border-color: #fff;
+}
+
+/* ----- ログイン画面 ----- */
+.login-form .form-row input {
+    font-size: 1.05rem;
+}
+
+/* ----- メニュー画面 ----- */
+.menu-lead {
+    color: #444;
+    margin: 0 0 16px;
+}
+
+.menu-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.menu-list__item {
+    border: 1px solid #cad6ea;
+    border-radius: 6px;
+    background: #fff;
+    transition: box-shadow 0.15s ease;
+}
+.menu-list__item:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.menu-list__link {
+    display: block;
+    padding: 16px 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.menu-list__label {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #1c2a4a;
+    margin-bottom: 4px;
+}
+
+.menu-list__desc {
+    display: block;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* ----- 集計画面 ----- */
+.aggregate-form {
+    max-width: 420px;
+}
