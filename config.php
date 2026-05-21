@@ -8,9 +8,10 @@
  * - Smarty テンプレートエンジンを初期化して返却する
  * - すべての画面・処理ファイルから require_once で読み込む
  *
- * Smarty / Dompdf の読み込み方針：
+ * Smarty 読み込み方針（優先順）：
  *   1. Composer の vendor/autoload.php があれば優先する
- *   2. 無ければ libs/Smarty/Smarty.class.php を読み込む（手動配置用フォールバック）
+ *   2. サーバー共有ライブラリ /usr/local/lib/smarty4/libs/Smarty.class.php
+ *   3. プロジェクト内 libs/Smarty/Smarty.class.php（手動配置用）
  *
  * コーディング規約：
  *   - 関数：キャメルケース／定数：大文字スネークケース／コメント：日本語
@@ -19,16 +20,16 @@
 require_once __DIR__ . '/constants.php';
 
 // =============================================================================
-// DB接続設定（環境変数で上書き可能。未設定時は学校演習用の既定値を使用）
+// DB接続設定
 // =============================================================================
 /** DBホスト */
-const DB_HOST    = '127.0.0.1';
+const DB_HOST    = 'localhost';
 /** DB名 */
-const DB_NAME    = 'spaceworld';
+const DB_NAME    = 'se2_2025';
 /** DBユーザー */
-const DB_USER    = 'spaceworld';
+const DB_USER    = 'se2_2025';
 /** DBパスワード */
-const DB_PASS    = 'spaceworld';
+const DB_PASS    = 'IshidaT';
 /** DB文字コード */
 const DB_CHARSET = 'utf8mb4';
 
@@ -40,7 +41,15 @@ if (is_file($composerAutoload)) {
     require_once $composerAutoload;
 }
 
-// Composer に Smarty が含まれていない環境向けのフォールバック
+// サーバー共有 Smarty（inc_smarty.php と同じパス）
+if (!class_exists('Smarty')) {
+    $smartyServerPath = '/usr/local/lib/smarty4/libs/Smarty.class.php';
+    if (is_file($smartyServerPath)) {
+        require_once $smartyServerPath;
+    }
+}
+
+// プロジェクト内手動配置のフォールバック
 if (!class_exists('Smarty')) {
     $smartyManualPath = __DIR__ . '/libs/Smarty/Smarty.class.php';
     if (is_file($smartyManualPath)) {
@@ -103,7 +112,7 @@ function getSmarty(): Smarty
 
     if (!class_exists('Smarty')) {
         http_response_code(500);
-        echo 'Smarty ライブラリが見つかりません。composer install または libs/Smarty/ への配置を行ってください。';
+        echo 'Smarty ライブラリが見つかりません。/usr/local/lib/smarty4/libs/ の存在を確認してください。';
         exit;
     }
 
