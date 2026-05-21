@@ -1,0 +1,198 @@
+/* =============================================================================
+ *  共通スタイル（画面担当）
+ *  - S-01 〜 S-03 を含む全画面の基本スタイル
+ *  - 管理者画面では admin.css を追加で読み込む
+ * ============================================================================= */
+
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    font-family: "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+    color: #222;
+    background: #f4f6fb;
+    line-height: 1.6;
+}
+
+.site-header,
+.admin-header {
+    background: #003366;
+    color: #fff;
+    padding: 16px 24px;
+}
+
+.site-header__title,
+.admin-header__title {
+    margin: 0;
+    font-size: 1.4rem;
+}
+
+.site-header__subtitle {
+    margin: 4px 0 0;
+    font-size: 0.95rem;
+    color: #cfd9eb;
+}
+
+.site-main,
+.admin-main {
+    max-width: 960px;
+    margin: 24px auto;
+    padding: 0 16px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.card--narrow {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card__title {
+    margin: 0 0 16px;
+    font-size: 1.2rem;
+    color: #003366;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 6px;
+}
+
+/* ----- フォーム共通 ----- */
+.form-row {
+    margin-bottom: 16px;
+}
+.form-row label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+.form-row input,
+.form-row select {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid #bbb;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-buttons,
+.ticket-form__buttons,
+.confirm-form__buttons,
+.complete-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    transition: opacity 0.15s ease;
+}
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+.btn--primary { background: #003366; color: #fff; }
+.btn--primary:hover:not(:disabled) { background: #00264d; }
+.btn--secondary { background: #fff; color: #003366; border-color: #003366; }
+.btn--secondary:hover { background: #eef2f7; }
+
+/* ----- エラー / 情報メッセージ ----- */
+.error-list {
+    list-style: disc inside;
+    background: #fdecea;
+    border: 1px solid #f5c2c0;
+    color: #a3251b;
+    padding: 10px 16px;
+    border-radius: 4px;
+    margin: 0 0 16px;
+}
+.error-list__item { margin: 2px 0; }
+
+.info-message {
+    background: #eef4fb;
+    border: 1px solid #b9d4ee;
+    color: #1c4f8a;
+    padding: 10px 16px;
+    border-radius: 4px;
+    margin: 0 0 16px;
+}
+
+/* ----- S-01 券種選択 ----- */
+.ticket-form__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+.ticket-form__table th,
+.ticket-form__table td {
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    text-align: center;
+}
+.ticket-form__table th { background: #eef2f7; }
+.ticket-form__price { font-weight: bold; }
+.ticket-form__unit { margin-left: 4px; }
+
+.ticket-form__summary {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 16px;
+    max-width: 280px;
+    margin-left: auto;
+}
+.ticket-form__summary dt { font-weight: bold; }
+.ticket-form__summary dd { margin: 0; text-align: right; font-size: 1.1rem; }
+
+/* ----- S-02 確認画面 ----- */
+.confirm-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+}
+.confirm-table th,
+.confirm-table td {
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+    text-align: center;
+}
+.confirm-table th { background: #eef2f7; }
+.confirm-table td.num,
+.confirm-table th.num { text-align: right; }
+.confirm-table tfoot th,
+.confirm-table tfoot td { background: #fff8e1; font-weight: bold; }
+
+/* ----- S-03 完了画面 ----- */
+.complete-info {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 6px 24px;
+    max-width: 360px;
+    margin: 0 0 16px;
+}
+.complete-info dt { font-weight: bold; }
+.complete-info dd { margin: 0; }
+
+.complete-message {
+    color: #444;
+}
+
+/* ----- フッター ----- */
+.site-footer {
+    text-align: center;
+    color: #777;
+    padding: 16px;
+    font-size: 0.9rem;
+}
+.site-footer__copy { margin: 0; }
